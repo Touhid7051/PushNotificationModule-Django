@@ -16,4 +16,4 @@ class Task(models.Model):
     creation_date=models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.assigned_to
+        return str(self.assigned_to)

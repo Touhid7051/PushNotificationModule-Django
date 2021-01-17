@@ -17,4 +17,4 @@ class Notification(models.Model):
     pk_relation=models.IntegerField(blank=True,null=True)
 
     def __str__(self):
-        return self.assigned_to
+        return str(self.assigned_to)
