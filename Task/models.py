@@ -15,5 +15,12 @@ class Task(models.Model):
     is_done=models.BooleanField(default=False)
     creation_date=models.DateTimeField(auto_now_add=True)
 
+    old_instance=models.ForeignKey('Task',blank=True,null=True,on_delete=models.CASCADE,editable=False)
+
+    def save(self, *args,**kwargs):
+        if self.pk is not None:
+            self.old_instance=Task.object.get(pk=self.pk)
+        self().save(*args,**kwargs)
+
     def __str__(self):
         return str(self.assigned_to)
