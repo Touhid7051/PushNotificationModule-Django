@@ -9,5 +9,6 @@ class NotificationAdmin(admin.ModelAdmin):
     list_display = ('__str__', 'is_read', 'group', 'creation_date',)
     list_filter = ('is_read','group',)
     search_fields = ('assigned_to__username',)
+    list_editable = ('is_read',)
 
 admin.site.register(Notification,NotificationAdmin)
