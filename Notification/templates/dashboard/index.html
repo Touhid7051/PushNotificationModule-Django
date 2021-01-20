@@ -1,5 +1,11 @@
 {% extends 'basic/main.html' %}{% block content %}
 <h1>Real Time Notification app</h1>
 <h3>
-    <b>Notification Count:{{unread_notification_count}}</b></h3>
-{% endblock %}
+    <b>Notification Count:{{unread_notification_count}}</b>
+</h3>
+<ul>
+    {% for unread_notification in unread_notifications %}
+    <li>{{unread_notification}}</li>
+    {% endfor %}
+</ul>
+{% endblock %}}

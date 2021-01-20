@@ -6,9 +6,10 @@ from .models import Notification
 def index(request):
     if not request.user.is_authenticated:
         return render(request,'dashboard/notAuth.html')     
-    unread_notification_count = request.user.notifications_assigned_to_user.filter(is_read=False).count()
+    unread_notifications = request.user.notifications_assigned_to_user.filter(is_read=False).order_by('-creation_date')
     context = {
-        'unread_notification_count':unread_notification_count
+        'unread_notification_count':unread_notifications.count(),
+        'unread_notifications':unread_notifications[:5]
     }
     return render(request,'dashboard/index.html', context=context)
     
